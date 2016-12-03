@@ -1,0 +1,81 @@
+SELECT User FROM mysql.user;
+ create user s1;
+ CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+
+
+mysql -u s1	
+mysql -u 'arjun' -p
+
+
+GRANT ALL PRIVILEGES ON mydb.* TO 'myuser'@'%' WITH GRANT OPTION;
+
+GRANT EXECUTE, PROCESS, SELECT, SHOW DATABASES, SHOW VIEW, ALTER, ALTER ROUTINE,
+    CREATE, CREATE ROUTINE, CREATE TEMPORARY TABLES, CREATE VIEW, DELETE, DROP,
+    EVENT, INDEX, INSERT, REFERENCES, TRIGGER, UPDATE, CREATE USER, FILE,
+    LOCK TABLES, RELOAD, REPLICATION CLIENT, REPLICATION SLAVE, SHUTDOWN,
+    SUPER
+        ON *.* TO mysql@'%'
+    WITH GRANT OPTION;
+
+
+//syntax
+GRANT privileges [columns]
+ON object
+TO user [IDENTIFIED BY 'password']
+[WITH GRANT OPTION]
+
+
+GRANT ALL
+ON dbmusic.*
+TO dbuser IDENTIFIED BY ‘userpass’
+
+
+show grants for s3;
+SHOW GRANTS FOR 'arjun'@'localhost';
+
+
+//syntax
+REVOKE priv_type
+ON object
+FROM user [, user]
+
+REVOKE INSERT
+ON dbmusic.*
+FROM dbuser
+
+
+https://kyup.com/tutorials/create-new-user-grant-permissions-mysql/
+
+http://www.mysqltutorial.org/mysql-grant.aspx
+
+SET PASSWORD FOR ‘username’@’host’ = PASSWORD('newpass');
+
+Example: While logged in as dbuser
+SET PASSWORD = PASSWORD(‘it420t’)
+
+//roles
+CREATE ROLE dw_manager;
+
+CREATE ROLE dw_manager
+   IDENTIFIED BY warehouse; //with password
+
+dw_manager //role name
+
+GRANT
+     CREATE ANY MATERIALIZED VIEW
+   , ALTER ANY MATERIALIZED VIEW
+   , DROP ANY MATERIALIZED VIEW
+   , QUERY REWRITE
+   , GLOBAL QUERY REWRITE
+   TO dw_manager
+   WITH ADMIN OPTION;
+
+GRANT CREATE ROLE TO store;
+GRANT CREATE USER TO store WITH ADMIN OPTION;
+
+CREATE ROLE product_manager;
+CREATE ROLE hr_manager;
+CREATE ROLE overall_manager IDENTIFIED by manager_password;
+
+//assign to user   
+GRANT TestRole TO Alice;

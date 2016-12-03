@@ -1,0 +1,8 @@
+ifconfig \all=
+nmcli dev show eno1
+
+ipconfig /displaydns=
+strings /var/cache/nscd/hosts
+
+ipconfig /flushdns=
+sudo /etc/init.d/nscd restart

@@ -1,0 +1,9 @@
+Create table users (id int not null auto_increment,
+email VARCHAR(45) NULL,
+password VARCHAR(45) NULL,
+PRIMARY KEY (id));
+
+insert into users (email,password) values ('m@m.com',md5('abc'));
+
+SELECT * FROM users WHERE email = 'xxx@xxx.xxx' OR 1 = 1 LIMIT 1 -- ' ] AND password = md5('1234');
+SELECT * FROM users WHERE email = 'xxx@xxx.xxx' AND password = md5('xxx') OR 1 = 1 -- ]');
